@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  vault:
+    image: vault:1.12.2
+    container_name: vault
+    restart: unless-stopped
+    cap_add:
+      - IPC_LOCK
+    environment:
+      - VAULT_DEV_ROOT_TOKEN_ID=myroot
+      - VAULT_ADDR=http://0.0.0.0:8200
+    ports:
+      - 8200:8200
+
+  vaultconsole:
+    image: ${DOCKER_REGISTRY-}vaultconsole
+    build:
+      context: .
+      dockerfile: VaultConsole/Dockerfile

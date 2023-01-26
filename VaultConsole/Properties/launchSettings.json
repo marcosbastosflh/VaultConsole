@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "VaultConsole": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
