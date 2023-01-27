@@ -18,3 +18,8 @@ services:
     build:
       context: .
       dockerfile: VaultConsole/Dockerfile
+    environment:
+      Vault__host: http://vault:8200
+    depends_on:
+      vault:
+        condition: service_started

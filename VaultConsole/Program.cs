@@ -3,11 +3,11 @@ using VaultSharp.V1.AuthMethods;
 using VaultSharp;
 using VaultSharp.V1.Commons;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 
-using IHost host = Host.CreateDefaultBuilder(args).Build();
-IConfiguration config = host.Services.GetRequiredService<IConfiguration>();
+IConfiguration config = new ConfigurationBuilder()
+    .AddJsonFile("appsettings.json")
+    .AddEnvironmentVariables()
+    .Build();
 
 var vault_host = config.GetValue<string>("Vault:host");
 var vault_token = config.GetValue<string>("Vault:token");
